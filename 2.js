@@ -3,12 +3,13 @@
 // Dilarang menggunakan function reverse, buatlah logika sendiri
 
 function reverseString(str) {
-	let result = '';
-	for (let i = 0; i < str.length; i++) {
-		result = str[i] + result;
+	if (str === '') {
+		return str;
 	}
 
-	return result;
+	let length = str.length;
+
+	return str.substr(-1) + reverseString(str.substr(0, length - 1));
 }
 
 console.log(reverseString('abcde'));
