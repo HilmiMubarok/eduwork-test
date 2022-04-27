@@ -12,8 +12,23 @@
 
 function onlyNumber(str) {
 	let pattern = /\D/g;
+	let res = str.replace(pattern, '');
 
-	return str.replace(pattern, '');
+	let result = [];
+	res.toLocaleString().split('').forEach(function(item) {
+		let jumlahNol = res.length - 1 - res.indexOf(item);
+		let nol = '';
+
+		for (let j = 1; j <= jumlahNol; j++) {
+			nol += '0';
+		}
+		result.push(item + nol);
+	});
+
+	result.unshift(res);
+	result = result.join('\n');
+
+	return result;
 }
 
-console.log(onlyNumber('‘9.86-A5.321’'));
+console.log(onlyNumber('9.86-A5.321'));
